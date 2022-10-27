@@ -1,2 +1,44 @@
-\section{}
+\section{Magnesium has three stable isotopes with atomic weights of 24, 25, and 26. You are given one mole of enriched magnesium. The block weighs 25.2 grams. You do not know the fractions of Mg-24, Mg-25, and Mg-26 in the block, only the total mass.}
 
+\begin{enumerate}[label=\textbf{\Alph*}.]
+    \item Let $p_1$, $p_2$, and $p_3$ be the fractions of Mg-24, Mg-25, and Mg-26 atoms in your sample. Obviously $p_1+p_2+p_3=1$. You also have the constraint that the total mass is 25.2g. Use maximum entropy principles to derive the joint probability distribution $P(p_1,p_2)$ that has the largest entropy given the constraints. (Hint: assume that the measure function $m(x)$ is constant when calculating the entropy of this continuous distribution -- see the formula for the entropy of a continuous probability distribution in Gregory's book. Also, think carefully about the allowed ranges for each variable. The PDF won't depend upon $p_3$ because $p_1+p_2+p_3=1$ determines $p_3$.)
+
+    The formula from Gregory for a continuous distribution with $m$ constant is:
+
+    \begin{align*}
+        S_c = -\int P(y) \ln(P(y)) dy + \text{constant}
+    \end{align*}
+
+    Or in our case,
+    \begin{align*}
+        S_c = -\int_0^1 \int_0^{1-p_1} P(p_1', p_2', 1-p_1-p_2) \ln(P(p_1', p_2', 1-p_1-p_2)) dp_2' dp_1' + \text{constant}
+    \end{align*}
+
+    And here we have the constraint $C = p_1+p_2+p_3 - 1 = 0$.
+
+    Maximize using Lagrange multipliers:
+
+    \begin{align*}
+        d(S_c - \lambda C) &= 0 \\
+        \sum_i \frac{\d S_c}{\d p_i} dp_i - \lambda \frac{\d C}{\d p_i} dp_i &= 0 \\
+    \end{align*}
+
+    Equating $dp_i$ terms:
+    \begin{align*}
+        \frac{\d S_c}{\d p_i} &= \lambda \frac{\d C}{\d p_i} \\
+        -\frac{\d}{\d p_i} \int_0^1 \int_0^{1-p_1} P(p_1', p_2', 1-p_1-p_2) \ln(P(p_1', p_2', 1-p_1-p_2)) dp_2' dp_1' &= \lambda (1) \\
+    \end{align*}
+
+    Find $\lambda$ using $p_3$:
+    \begin{align*}
+        -\frac{\d}{\d p_3}\int_0^1 \int_0^{1-p_1} P(p_1', p_2', 1-p_1-p_2) \ln(P(p_1', p_2', 1-p_1-p_2)) dp_2' dp_1' &= \lambda \\
+    \end{align*}
+
+    Then note that since $p_1 + p_2 = 1 - p_3$ and $p_i \in [0,1]$,
+
+    To get the maximum entropy
+
+
+\end{enumerate}
+
+\todo[inline]{finish me!}

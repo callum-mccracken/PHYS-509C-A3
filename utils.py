@@ -63,6 +63,17 @@ def binomial_pmf(k, n, p):
     return binom(n, p).pmf(k)
 
 
+def one_param(f):
+    """
+    Often we have functions with many parameters we want to minimize.
+    However, the minimizer requires functions with only one parameter.
+    Use this to get the same function back as a one-parameter thing.
+    """
+    def new_f(parameters):
+        return f(*parameters)
+    return new_f
+
+
 
 def main():
     """make some plots"""

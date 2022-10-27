@@ -1,31 +1,41 @@
-\section{Supernovae}
+\section{Parameter Estimation With Supernovae}
 
 \begin{enumerate}[label=\textbf{\Alph*}.]
-    \item Fit a Gaussian with ML
+    \item Some telescope measures luminosity at various redshifts.
+    The redshift $z$ is measured with negligible uncertainty.
+    The distance $D$ depends on redshift according to: $D = \frac{1}{H_0}(z + 0.5z^2(1-q_0))$.
+    $H_0$ = Hubble, $q_0$ = acc/deceleration, and depends on the densities of matter and dark energy in the universe according to $q0 = \Omega_M/2 - \Omega_\Lambda$.
+    Assume $\Omega_M + \Omega_\Lambda = 1, \Omega_i \ge 0$.
+    Apparent luminosity: $L=L_0/D^2$, where $L_0$ is its intrinsic brightness.
+    The astronomical magnitude of each supernova is given by $m = -2.5\log_{10}(L)$.
+    From studies of nearby supernovae, $\sigma_m = 0.1$, presumably due to some intrinsic random variation in the intrinsic brightness.
+    Using the data file, determine the best-fit and "1 sigma" uncertainty for $\Omega_\Lambda$ from this data.
 
-    \item 
 
-    \item 
+
+    \begin{align*}
+        D &= \frac{1}{H_0} \left(z + \frac{1}{2}z^2 (1-q_0)\right)\\
+        q_0 &= \frac{\Omega_M}{2} - \Omega_\Lambda\\
+        \Omega_M + \Omega_\Lambda &= 1: \Omega_M, \Omega_\Lambda > 0\\
+        L &= \frac{L_0}{D^2}\\
+        m &= -2.5\log_{10}(L)\\
+        \sigma_m &= \pm 0.1 \\
+    \end{align*}
+    
+    Using data file, (col1 = z, col2 = m), find the best-fit and $1\sigma$ uncertainty for $\Omega_\Lambda$.
+    
+    \begin{align*}
+        D &= \frac{1}{H_0} \left(z + \frac{1}{2}z^2 (1-q_0)\right)\\
+        q_0 &= \frac{\Omega_M}{2} - \Omega_\Lambda\\
+        \Omega_M + \Omega_\Lambda &= 1: \Omega_M, \Omega_\Lambda > 0\\
+        L &= \frac{L_0}{D^2}\\
+        m &= -2.5\log_{10}(L)\\
+        \sigma_m &= \pm 0.1 \\
+    \end{align*}
+
+    \todo[inline]{finish me!}
+
+    \item A possible systematic uncertainty in this measurement: $a$ such that $L_0(z) = L_0(1+az)$.
+    $a=0 \pm 0.2$. Incorporating this as a new systematic to the calculation in Part A, calculate the total uncertainty on $\Omega_\Lambda$.
 
 \end{enumerate}
-
-
-\begin{align*}
-    D &= \frac{1}{H_0} \left(z + \frac{1}{2}z^2 (1-q_0)\right)\\
-    q_0 &= \frac{\Omega_M}{2} - \Omega_\Lambda\\
-    \Omega_M + \Omega_\Lambda &= 1: \Omega_M, \Omega_\Lambda > 0\\
-    L &= \frac{L_0}{D^2}\\
-    m &= -2.5\log_{10}(L)\\
-    \sigma_m &= \pm 0.1 \\
-\end{align*}
-
-Using data file, (col1 = z, col2 = m), find the best-fit and $1\sigma$ uncertainty for $\Omega_\Lambda$.
-
-\begin{align*}
-    D &= \frac{1}{H_0} \left(z + \frac{1}{2}z^2 (1-q_0)\right)\\
-    q_0 &= \frac{\Omega_M}{2} - \Omega_\Lambda\\
-    \Omega_M + \Omega_\Lambda &= 1: \Omega_M, \Omega_\Lambda > 0\\
-    L &= \frac{L_0}{D^2}\\
-    m &= -2.5\log_{10}(L)\\
-    \sigma_m &= \pm 0.1 \\
-\end{align*}

@@ -1,6 +1,5 @@
-Overall: need to make the code sexy
-
-1: Done.
-2: Started, kind of stuck...
-3: Done? Confused about the end.
-4: Done.
+1: There's the confusion about independence, but if that's okay, done.
+2: Confused about how to deal with correlations between uncertainties
+3: How to deal with the constants? Do we have priors for those?
+4: Had some thoughts, not very sure about anything though...
+5. Want to check before moving on, distribution seems oddly steep, did I goof?
