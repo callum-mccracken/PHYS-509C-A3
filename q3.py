@@ -1,58 +1,89 @@
-"""
-Assume that the data follows an exponential plateau,
-approaching some steady state value C.
-
-Do a maximum likelihood fit for this level,
-and determine the uncertainty on it.
-
-Note that you have not been given the uncertainties on the measured
-values -- instead, assume that all measurements have the same uncertainty
-level, and fit for it as one of the parameters in your fit.
-
-Submit your code, the functional form you fit,
-and your result for the steady state value (with uncertainty).
-
-What uncertainty value per data point did you get?
-
-How much of that uncertainty can be attributed to the time binning
-(measurements are only reported to the nearest minute)?
-"""
 from matplotlib import pyplot as plt
 import numpy as np
-from scipy.optimize import minimize
-from scipy import stats
 import matplotlib
+from scipy.optimize import minimize
+import utils
+
 matplotlib.rcParams['mathtext.fontset'] = 'stix'
 matplotlib.rcParams['font.family'] = 'STIXGeneral'
 
+filedata = np.loadtxt("sn_data.txt")
+z = filedata[:,0]
+m = filedata[:,1]
 
-# t = minutes after start time
-t_data = np.array([0, 6, 10, 14, 19, 24, 29, 33, 46, 54, 57])
-# y = ppm
-y_data = np.array([484, 501, 520, 535, 554, 565, 579, 593, 635, 651, 654])
+plt.scatter(z, m)
+sigma_m = 0.1
 
-def fit_function(t, C, B, A):
-    """our exponential plateau functional form"""
-    return C - B*np.exp(-A*t)
+def mean_m(z_i, Q, Ω_Λ):
+    return -2.5*np.log10(Q/((z_i + 1/2*z_i**2 * ((1 + 3*Ω_Λ)/2))**2))
 
-def neg_ll(params):
-    """negative log likelihood, as a function with 1 parameter to minimize"""
-    C, B, A, sigma_y = params
-    y_pred = fit_function(t_data, C, B, A)
-    return -np.sum(stats.norm.logpdf(y_data, loc=y_pred, scale=sigma_y))
+def neg_ll(Q, Ω_Λ):
+    """Negative log likelihood, derived in text."""
+    # Let L_0H_0^2 = Q
+    mean = mean_m(z, Q, Ω_Λ)
+    return np.sum(
+        np.log(np.sqrt(2*np.pi) * sigma_m) + ((m - mean)**2/(2*sigma_m**2)))
 
-# from eyeballing
-guess = [900, 300, 0.01, 10]
+# the guesses come from asking friends what it should roughly work out to
+guess = [4e-16, 7e-01]
 
-# no good reason why Nelder-Mead beyond trying a few and seeing
-# that this one fixes an overflow error
-results = minimize(neg_ll, guess, method='Nelder-Mead')
-C_0, B_0, A_0, sigma_0 = results.x
+Q_0, Ω_Λ_0 = minimize(
+    utils.one_param(neg_ll), guess, method="Nelder-Mead",
+    bounds=((0, None), (0, 1))).x
 
-# plot it
-print(C_0, B_0, A_0, sigma_0)
-plt.plot(t_data, y_data, 'go')
-plt.errorbar(t_data, fit_function(t_data, C_0, B_0, A_0), yerr=sigma_0)
-plt.xlabel("Time in minutes past the first data point")
-plt.ylabel("CO2 Concentration")
+print(f"{Q_0=}, {Ω_Λ_0=}")
+
+z_sorted = np.array(sorted(z))
+m_fit = mean_m(z_sorted, Q_0, Ω_Λ_0)
+plt.plot(z_sorted, m_fit)
+
+plt.xlabel("z")
+plt.ylabel("m")
 plt.savefig("q3.png")
+plt.cla()
+plt.clf()
+
+def neg_ll_one_param(Ω_Λ):
+    return neg_ll(Q_0, Ω_Λ)
+
+def ll_sigma_bounds(x_vals, neg_log_l_vals, n_sigma):
+    """
+    Find the uncertainty bounds for a neg log likelihood function.
+    
+    This assumes that the uncertainty bounds occur at two the x values given.
+
+    (i.e. make your x as fine-grained as needed, we don't interpolate)
+    """
+    # find the minimum
+    min_y_index = np.where(neg_log_l_vals == min(neg_log_l_vals))[0]
+    min_y = neg_log_l_vals[min_y_index]
+
+    if n_sigma == 1:
+        increment = 0.5
+    else:
+        raise ValueError("This has not been coded yet")
+
+    thresh = min_y + increment
+
+    # find where function crosses thresh
+    first_index = np.where(neg_log_l_vals < thresh)[0][0]
+    last_index = np.where(neg_log_l_vals < thresh)[-1][-1]
+
+    print(first_index, last_index)
+    # return min, max x bounds
+    return x_vals[first_index], x_vals[last_index]
+
+x = np.linspace(0.6, 0.8, 1000)
+y = np.array([neg_ll_one_param(xi) for xi in x])
+one_sigma_bound_min, one_sigma_bound_max = ll_sigma_bounds(x, y, n_sigma=1)
+plt.axvline(x[np.where(y==min(y))], linestyle='--')
+plt.axhline(min(y) + 0.5, linestyle='--')
+plt.plot(x, y)
+plt.xlabel("$\Omega_\Lambda$")
+plt.ylabel("$-\ln(L)$")
+plt.show()
+
+print(
+    "central value:", Ω_Λ_0,
+    "upper uncertainty:", one_sigma_bound_max - Ω_Λ_0,
+    "lower uncertainty:", Ω_Λ_0 - one_sigma_bound_min)

@@ -17,7 +17,7 @@
 
     This can be minimized computationally (see the code). Doing so gives:
 
-    $$\mu_0=0.0, \sigma_0=0.0129$$
+    $$\mu_0=0.000108, \sigma_0=0.0129$$
 
     \item Fit a Laplace distribution, also with ML.
 
@@ -34,18 +34,26 @@
 
     Again, minimize computationally, which gives:
 
-    $$A_0=0.0, B_0=0.00694$$
+    $$A_0=0.000488, B_0=0.00764$$
 
     \item Plot a histogram on a log scale of the $R_i$ and overlay each best fit. Which one looks better?
 
+    I'd say the Laplace distribution looks better.
     \begin{figure}[H]
         \begin{center}
-            \includegraphics[width=\textwidth]{q1_return_hist.png}
+            \includegraphics[width=0.75\textwidth]{q1_return_hist.png}
         \end{center}
     \end{figure}
 
-    The Laplace distribution looks better.
+    \item Simulate the growth of a \$100 investment using the best-fit Laplacian, Gaussian, and drawing returns from the data.
 
-    \item The 
+    Here, it looks like the Gaussian might be a better fit.
+    \begin{figure}[H]
+        \begin{center}
+            \includegraphics[width=0.75\textwidth]{q1_generator_comparison.png}
+        \end{center}
+    \end{figure}
+
+    \todo[inline]{do we have any explanation for that?}
 
 \end{enumerate}

@@ -11,34 +11,80 @@
 
     Or in our case,
     \begin{align*}
-        S_c = -\int_0^1 \int_0^{1-p_1} P(p_1', p_2', 1-p_1-p_2) \ln(P(p_1', p_2', 1-p_1-p_2)) dp_2' dp_1' + \text{constant}
+        S_c = -\iiint P(p_1, p_2, p_3) \ln(P(p_1, p_2, p_3)) dp_1 dp_2 dp_3 + \text{constant}
     \end{align*}
 
-    And here we have the constraint $C = p_1+p_2+p_3 - 1 = 0$.
+    And here we have the constraint $p_1+p_2+p_3 = 1$, as well as $24p_1 + 25p_2 + 26p_3 = 25.2$.
 
-    Maximize using Lagrange multipliers:
+    Use the constraints to get the integral down to a single integral:
 
     \begin{align*}
-        d(S_c - \lambda C) &= 0 \\
-        \sum_i \frac{\d S_c}{\d p_i} dp_i - \lambda \frac{\d C}{\d p_i} dp_i &= 0 \\
+        S_c &= -\iiint \delta(p_1 + p_2 + p_3 - 1) \delta(24p_1 + 25p_2 + 26p_3 - 25.2) \\
+        &\hspace{2cm}P(p_1, p_2, p_3) \ln(P(p_1, p_2, p_3)) dp_1 dp_2 dp_3 + \text{constant} \\
+        &= -\iint \delta(24p_1 + 25p_2 + 26(1 - p_1 - p_2) - 25.2) \\
+        &\hspace{2cm}P(p_1, p_2, (1 - p_1 - p_2)) \ln(P(p_1, p_2, (1 - p_1 - p_2))) dp_1 dp_2 + \text{constant} \\
     \end{align*}
 
-    Equating $dp_i$ terms:
+    When is that second delta equal to zero?
     \begin{align*}
-        \frac{\d S_c}{\d p_i} &= \lambda \frac{\d C}{\d p_i} \\
-        -\frac{\d}{\d p_i} \int_0^1 \int_0^{1-p_1} P(p_1', p_2', 1-p_1-p_2) \ln(P(p_1', p_2', 1-p_1-p_2)) dp_2' dp_1' &= \lambda (1) \\
+        24p_1 + 25p_2 + 26(1 - p_1 - p_2) - 25.2 &= 0\\
+        24p_1 + 25p_2 - 26p_1 - 26p_2 &= 25.2 - 26\\
+        -2p_1 - p_2 &= -0.8\\
+        p_2 &= 0.8 - 2p_1\\
+        \implies p_3 &= 1 - p_1 - p_2 \\
+        &= 1 - p_1 - 0.8 + 2p_1 \\
+        &= 0.2 + p_1 \\
     \end{align*}
 
-    Find $\lambda$ using $p_3$:
     \begin{align*}
-        -\frac{\d}{\d p_3}\int_0^1 \int_0^{1-p_1} P(p_1', p_2', 1-p_1-p_2) \ln(P(p_1', p_2', 1-p_1-p_2)) dp_2' dp_1' &= \lambda \\
+        S_c &= -\int P(p_1, 0.8 - 2p_1, 0.2 + p_1) \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) dp_1 + \text{constant} \\
     \end{align*}
 
-    Then note that since $p_1 + p_2 = 1 - p_3$ and $p_i \in [0,1]$,
+    Maximize:
+    \begin{align*}
+        \frac{d}{dp_1}S_c &= 0 \\
+        -\frac{d}{dp_1}\int_0^{p_1} P(p_1', 0.8 - 2p_1', 0.2 + p_1') \ln(P(p_1', 0.8 - 2p_1', 0.2 + p_1')) dp_1' + 0 &= 0 \\
+        P(p_1, 0.8 - 2p_1, 0.2 + p_1) \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) &= 0 \\
+        P(p_1, 0.8 - 2p_1, 0.2 + p_1) \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) &= 0 \\
+    \end{align*}
 
-    To get the maximum entropy
+    This means either $P = 0$ (not possible for a probability distribution), or $\ln(P) = 0$.
+    \begin{align*}
+        \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) &= 0 \\
+        \implies P(p_1, 0.8 - 2p_1, 0.2 + p_1) &= 1 \\
+    \end{align*}
 
+    So the distribution is uniform... This seems a little suspicious but okay...
+
+    Normalize this over the possible range of $p_1$. Minimum is zero, find the max:
+
+
+    \begin{align*}
+        0 &\le p_2 \le 1 \\
+        0 &\le 0.8 - 2p_1 \le 1 \\
+        -0.8 &\le - 2p_1 \le 0.2 \\
+        0.8 &\ge 2p_1 \ge -0.2 \\
+        0.4 &\ge p_1 \ge -0.1 \\
+        \implies 0.4 &\ge p_1 \ge 0 \\
+    \end{align*}
+
+    \begin{align*}
+        0 &\le p_3 \le 1 \\
+        0 &\le 0.2 + p_1 \le 1 \\
+        -0.2 &\le p_1 \le 0.8 \\
+        \implies 0 &\le p_1 \le 0.8 \\
+    \end{align*}
+
+    Take the minimum bound, $p_1 \in [0, 0.4]$
+
+    \begin{align*}
+        P(p_1) = \frac{1}{0.4} = 2.5, p_1 \in [0, 0.4]
+    \end{align*}
+
+    \item Suppose we measure $p_1 = \frac{12}{20}, p_2 = \frac{3}{20}, p_3 = \frac{5}{20}$.
+    
+    Prior: $P(p_1) = 15, p_1 \in [0, \frac{0.2}{3}]$
 
 \end{enumerate}
 
-\todo[inline]{finish me!}
+\todo[inline]{Double-check!}

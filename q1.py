@@ -43,7 +43,7 @@ def gauss_neg_ll(mu, sigma):
 # got this guess from looking at the histogram
 gauss_guess = (0.0001, 0.01)
 # minimize log likelihood to get gaussian params
-mu_0, sigma_0 = minimize(utils.one_param(gauss_neg_ll), gauss_guess).x
+mu_0, sigma_0 = minimize(utils.one_param(gauss_neg_ll), gauss_guess, method="Nelder-Mead").x
 print(f"{mu_0=}, {sigma_0=}")
 
 # add the Gaussian to the plot
@@ -60,7 +60,7 @@ def laplace_neg_ll(A, B):
 
 # use same guess, minimize Laplace distribution to get this
 laplace_guess = (0.0001, 0.01)
-A_0, B_0 = minimize(utils.one_param(laplace_neg_ll), laplace_guess).x
+A_0, B_0 = minimize(utils.one_param(laplace_neg_ll), laplace_guess, method="Nelder-Mead").x
 print(f"{A_0=}, {B_0=}")
 
 
@@ -72,7 +72,7 @@ def laplace_pdf(R, A, B):
 plt.plot(r, laplace_pdf(r, A_0, B_0), label="Laplace ML best-fit distribution")
 
 # plot everything, using a log scale like the question asks for
-plt.xscale("log")
+plt.yscale("log")
 plt.xlabel("Return")
 plt.ylabel("P(R)")
 plt.legend()
@@ -125,9 +125,10 @@ for trial in tqdm(range(n_trials)):
 plt.hist(gaussian_results, label="Gaussian", bins=50, alpha=0.5, density=True)
 plt.hist(laplace_results, label="Laplace", bins=50, alpha=0.5, density=True)
 plt.hist(data_results, label="Data", bins=50, alpha=0.5, density=True)
-plt.xlabel("Value v After 30 Years")
+plt.xlabel("Value v After 30 Years (truncated at 30k)")
 plt.ylabel("P(v)")
 plt.legend()
+plt.xlim(0, 30000)
 plt.savefig("q1_generator_comparison.png")
 plt.cla()
 plt.clf()
