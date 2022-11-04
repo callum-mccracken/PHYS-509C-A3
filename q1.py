@@ -74,7 +74,7 @@ plt.plot(r, laplace_pdf(r, A_0, B_0), label="Laplace ML best-fit distribution")
 # plot everything, using a log scale like the question asks for
 plt.yscale("log")
 plt.xlabel("Return")
-plt.ylabel("P(R)")
+plt.ylabel("log(P(R))")
 plt.legend()
 plt.savefig("q1_return_hist.png")
 plt.cla()

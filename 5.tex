@@ -52,7 +52,7 @@
     
     Prior: $g(p) = \frac{1}{\pi\sqrt{p(1-p)}}$
 
-    Likelihood: $P(\text{3 heads}|p) = \prod_i=1^3 P(\text{heads}|p) = p^3$
+    Likelihood: $P(\text{3 heads}|p) = \prod_{i=1}^3 P(\text{heads}|p) = p^3$
 
     Probability of data:
     \begin{align*}
@@ -79,54 +79,57 @@
 
     \item Suppose $p = \psi^4$. Derive the Jeffreys prior for $\psi$, starting with the likelihood for a single coin flip expressed as a function of $\psi$.
     
-    Use the Jeffreys prior formula again, where the likelihood of each hypothesis is binomial, with heads = ``success''.
-
-    $L(n|N, \psi) = \frac{N!}{n!(N-n)!} \psi^{4n} (1-\psi^4)^{N-n} \frac{dp}{d\psi} = \frac{N!}{n!(N-n)!} \psi^{4n} (1-\psi^4)^{N-n} 4\psi^3$
+    Use the Jeffreys prior formula again, where the likelihood is related to our binomial from before. Note that we take $\psi \in [0, 1]$, we could also use $\psi \in [-1, 1]$ but this would mean we have to worry about absolute values and such, and we'll just be off by a factor of two which we can correct for by normalizing.
 
     \begin{align*}
-        \frac{\d}{\d \psi} \ln(L(n|N, \psi)) &= \frac{\d}{\d \psi} \ln\left(\frac{4N!}{n!(N-n)!} \psi^{4n+3} (1-\psi^4)^{N-n}\right) \\
-        &= \frac{\d}{\d \psi} \ln\left(\frac{4N!}{n!(N-n)!}\right) + (4n+3)\ln(\psi) + (N-n)\ln(1-\psi^4) \\
-        &= 0 + \frac{4n+3}{\psi} - (N-n)\frac{4\psi^3}{1-\psi^4} \\
+        L(n|N, \psi) &= L(n|N, p=\psi^4) \\
+        &= \frac{N!}{n!(N-n)!} \psi^{4n} (1-\psi^4)^{N-n} \\
     \end{align*}
-
-    Here we flip a single coin once, so $N=1, n \in \{0,1\}$
     \begin{align*}
-        L(n|\psi) &= 4\psi^{4n+3} (1-\psi^4)^{1-n} \\
-        \frac{\d}{\d \psi} \ln(L(n|\psi)) &= \frac{4n+3}{\psi} - (1-n)\frac{4\psi^3}{1-\psi^4} \\
+        L(n|N=1, \psi) &= \psi^{4n} (1-\psi^4)^{1-n} \\
+        \ln(L(n|\psi)) &= 4n\ln(\psi) + (1-n)\ln(1-\psi^4) \\
+        \frac{\d}{\d \psi} \ln(L(n|\psi)) &= 4n\frac{1}{\psi} + (1-n)\frac{1}{1-\psi^4}(-4\psi^3) \\
+        &= \frac{4n(1-\psi^4)}{\psi(1-\psi^4)} + \frac{(1-n)(-4\psi^4)}{\psi(1-\psi^4)} \\
+        &= \frac{4(n-\psi^4)}{\psi(1-\psi^4)} \\
     \end{align*}
 
     \begin{align*}
         I(\psi) &=  \left< \left[\frac{\d}{\d \psi} \ln(L(n|\psi))\right]^2 \right> \\
-        &= \left< \left[\frac{4n+3}{\psi} - (1-n)\frac{4\psi^3}{1-\psi^4}\right]^2 \right> \\
-        &= \left< \left[\frac{(4n+3)(1-\psi^4)}{\psi(1-\psi^4)}+\frac{-4(1-n)\psi^4}{\psi(1-\psi^4)}\right]^2 \right> \\
-        &= \left< \left[\frac{4n + 3 - 7\psi^4}{\psi(1-\psi^4)}\right]^2 \right> \\
-        &= \left< \frac{(4n + 3 - 7\psi^4)^2}{\psi^2(1-\psi^4)^2} \right> \\
-        &= \sum_n L(n|\psi) \frac{(4n + 3 - 7\psi^4)^2}{\psi^2(1-\psi^4)^2} \\
-        &= L(0|\psi) \frac{(0 + 3 - 7\psi^4)^2}{\psi^2(1-\psi^4)^2} + L(1|\psi) \frac{(7 - 7\psi^4)^2}{\psi^2(1-\psi^4)^2} \\
-        &= (1 - \psi^4) \frac{(3 - 7\psi^4)^2}{\psi^2(1-\psi^4)^2} + \psi^4 \frac{49(1 - \psi^4)^2}{\psi^2(1-\psi^4)^2} \\
-        &= \frac{(3 - 7\psi^4)^2}{\psi^2(1-\psi^4)} + \frac{49\psi^4 (1 - \psi^4)}{\psi^2(1-\psi^4)} \\
-        &= \frac{(3 - 7\psi^4)^2 + 49\psi^4 (1 - \psi^4)}{\psi^2(1-\psi^4)} \\
-        &= \frac{9 + 49\psi^8 -42\psi^4 + 49\psi^4 - 49\psi^8}{\psi^2(1-\psi^4)} \\
-        &= \frac{9 +7\psi^4}{\psi^2(1-\psi^4)} \\
-        g(\psi) &\propto \frac{\sqrt{9 +7\psi^4}}{\psi\sqrt{1-\psi^4}} \\
+        &= \left< \left[\frac{4(n-\psi^4)}{\psi(1-\psi^4)}\right]^2 \right> \\
+        &= \left< \frac{16(n-\psi^4)^2}{\psi^2(1-\psi^4)^2} \right> \\
+        &= \sum_n L(n|\psi) \frac{16(n-\psi^4)^2}{\psi^2(1-\psi^4)^2} \\
+        &= L(0|\psi) \frac{16(0-\psi^4)^2}{\psi^2(1-\psi^4)^2} + L(1|\psi) \frac{16(1-\psi^4)^2}{\psi^2(1-\psi^4)^2} \\
+        &= (1-\psi^4) \frac{16\psi^6}{(1-\psi^4)^2} + \psi^4 \frac{16}{\psi^2} \\
+        &= \frac{16\psi^6}{1-\psi^4} +  \frac{16\psi^2(1-\psi^4)}{1-\psi^4} \\
+        &= \frac{16\psi^2}{1-\psi^4} \\
+        g(\psi) &\propto \frac{4\psi}{\sqrt{1-\psi^4}} \\
     \end{align*}
 
     Find the constant of proportionality by normalizing:
     \begin{align*}
-        \int_{-1}^1 g(\psi)d\psi &= 1 \\
-        \int_{-1}^1 A \frac{16\psi^2}{1-\psi^4} d\psi &= 1 \\
+        \int_0^1 g(\psi)d\psi &= 1 \\
+        \int_0^1 A \frac{4\psi}{\sqrt{1-\psi^4}} d\psi &= 1 \\
         A \pi &= 1 \\
         A &= \frac{1}{\pi} \\
     \end{align*}
 
     \begin{align*}
-        g(p) &= \frac{1}{\pi\sqrt{p(1-p)}} \\
+        g(\psi) &= \frac{4\psi}{\pi\sqrt{1-\psi^4}} \\
     \end{align*}
 
-    \todo[inline]{This isn't done yet!}
-
     \item Demonstrate explicitly that if you take the Jeffreys prior for $\psi$ from Part C and do a change of variables to $p$, you get back the Jeffreys prior for $p$ that you found in part A. This will confirm that Jeffreys' procedure for generating priors encodes the same information for both of these parametrizations.
-    
+
+    \begin{align*}
+        g(\psi) &= \frac{4\psi}{\pi\sqrt{1-\psi^4}} \\
+        g(\psi) &= g(p)\left|\frac{dp}{d\psi}\right| \\
+        &= \frac{1}{\pi\sqrt{p(1-p)}}\left|\frac{d}{d\psi}\psi^4\right| \\
+        &= \frac{1}{\pi\sqrt{\psi^4(1-\psi^4)}}\left|4\psi^3\right| \\
+        &= \frac{4}{\pi\sqrt{\psi^4(1-\psi^4)}}\psi^2|\psi| \\
+        &= \frac{4\psi}{\pi\sqrt{(1-\psi^4)}} \\
+    \end{align*}
+
+    (we can drop the absolute value since we've defined $\psi$ to be positive)
+
     \item Finally, show that if you started with a uniform prior for $p$ and a uniform prior for $\psi$, then these priors are actually different after converting from one parametrization to another with a change of variables. Thus a uniform prior is not a Jeffreys prior for this problem.
     
     Uniform prior for $\psi$: $P(\psi) = \frac{1}{2}, \psi \in [-1,1]$.
@@ -136,11 +139,9 @@
     Change of variables from $p \to \psi$:
 
     \begin{align*}
-        P(\psi) &= P(p) \frac{dp}{d\psi} \\
+        P(\psi) &= P(p) \left|\frac{dp}{d\psi}\right| \\
         &= (1) 4\psi^3 \\
         &\neq \text{uniform distribution} \\
     \end{align*}
 
 \end{enumerate}
-
-\todo[inline]{finish me!}

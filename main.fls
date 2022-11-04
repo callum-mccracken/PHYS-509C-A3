@@ -1089,6 +1089,16 @@ INPUT 3.tex
 INPUT ./3.tex
 INPUT ./3.tex
 INPUT 3.tex
+INPUT ./q3_a_fit.png
+INPUT ./q3_a_fit.png
+INPUT q3_a_fit.png
+INPUT ./q3_a_fit.png
+INPUT ./q3_a_fit.png
+INPUT ./q3_a_uncert.png
+INPUT ./q3_a_uncert.png
+INPUT q3_a_uncert.png
+INPUT ./q3_a_uncert.png
+INPUT ./q3_a_uncert.png
 INPUT ./4.tex
 INPUT ./4.tex
 INPUT ./4.tex

@@ -1,8 +1,8 @@
 1: Pretty much done (talk about code).
-2: Talk about method, have ideas.
-3: Still need to do B, integral diverges?
+2: Done.
+3: Done.
 4: Need to check about uniform distribution -- what's the deal?
-5. Check in with das amigo about the phi stuff, feeling good about A and B
+5: Still a little stuck on c), do we need to deal with the derivative thing?
 
 
 

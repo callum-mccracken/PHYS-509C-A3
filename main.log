@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2022.10.20)  3 NOV 2022 00:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2022.10.20)  4 NOV 2022 13:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -682,31 +682,41 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 40.
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./1.tex [2]
-<q1_return_hist.png, id=51, 462.528pt x 346.896pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./1.tex [2] [3]
+<q1_return_hist.png, id=55, 462.528pt x 346.896pt>
 File: q1_return_hist.png Graphic file (type png)
 <use q1_return_hist.png>
-Package pdftex.def Info: q1_return_hist.png  used on input line 44.
-(pdftex.def)             Requested size: 354.02342pt x 265.52806pt.
- [3]
-<q1_generator_comparison.png, id=58, 462.528pt x 346.896pt>
+Package pdftex.def Info: q1_return_hist.png  used on input line 45.
+(pdftex.def)             Requested size: 424.82523pt x 318.63474pt.
+ [4 <./q1_return_hist.png>]
+<q1_generator_comparison.png, id=63, 462.528pt x 346.896pt>
 File: q1_generator_comparison.png Graphic file (type png)
 <use q1_generator_comparison.png>
-Package pdftex.def Info: q1_generator_comparison.png  used on input line 53.
-(pdftex.def)             Requested size: 354.02342pt x 265.52806pt.
- [4 <./q1_return_hist.png>]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 57.
-) [5 <./q1_generator_comparison.png>] (./2.tex) [6] (./3.tex [7]
+Package pdftex.def Info: q1_generator_comparison.png  used on input line 54.
+(pdftex.def)             Requested size: 424.82523pt x 318.63474pt.
+) [5 <./q1_generator_comparison.png>] (./2.tex [6]) [7] (./3.tex [8]
 Overfull \hbox (40.54358pt too wide) detected at line 45
 []
  []
 
-[8]) [9] (./4.tex
+[9]
+<q3_a_fit.png, id=89, 462.528pt x 346.896pt>
+File: q3_a_fit.png Graphic file (type png)
+<use q3_a_fit.png>
+Package pdftex.def Info: q3_a_fit.png  used on input line 52.
+(pdftex.def)             Requested size: 354.02342pt x 265.52806pt.
+ [10 <./q3_a_fit.png>]
+<q3_a_uncert.png, id=95, 462.528pt x 346.896pt>
+File: q3_a_uncert.png Graphic file (type png)
+<use q3_a_uncert.png>
+Package pdftex.def Info: q3_a_uncert.png  used on input line 62.
+(pdftex.def)             Requested size: 354.02342pt x 265.52806pt.
+) [11 <./q3_a_uncert.png>] (./4.tex
 Overfull \hbox (36.54498pt too wide) detected at line 26
 []
  []
 
-[10]
+[12]
 Overfull \hbox (33.61514pt too wide) detected at line 41
 []
  []
@@ -716,14 +726,11 @@ Overfull \hbox (14.36705pt too wide) detected at line 49
 []
  []
 
-[11]) [12] [13] (./5.tex [14] [15] [16]
-Overfull \hbox (44.55394pt too wide) detected at line 90
-[]
- []
-
-[17] [18] [19]) 
+[13]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 90.
+) [14] [15] (./5.tex [16] [17] [18] [19] [20] [21]) 
 AED: lastpage setting LastPage
-[20] (./main.aux)
+[22] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D5ABF019A43A6F022A2BA300AD2E0C55;1968.
  )
@@ -732,18 +739,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 ### simple group (level 1) entered at line 40 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 26535 strings out of 478023
- 531639 string characters out of 5841207
- 795992 words of memory out of 5000000
- 44498 multiletter control sequences out of 15000+600000
+ 26539 strings out of 478023
+ 531700 string characters out of 5841207
+ 792798 words of memory out of 5000000
+ 44502 multiletter control sequences out of 15000+600000
  478909 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  115i,14n,118p,1472b,1100s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb>
-Output written on main.pdf (20 pages, 230188 bytes).
+Output written on main.pdf (22 pages, 260047 bytes).
 PDF statistics:
- 218 PDF objects out of 1000 (max. 8388607)
- 164 compressed objects within 2 object streams
- 44 named destinations out of 1000 (max. 500000)
- 63 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 225 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

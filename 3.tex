@@ -9,7 +9,7 @@
     Apparent luminosity: $L=L_0/D^2$, where $L_0$ is its intrinsic brightness.
     The astronomical magnitude of each supernova is given by $m = -2.5\log_{10}(L)$.
     From studies of nearby supernovae, $\sigma_m = 0.1$, presumably due to some intrinsic random variation in the intrinsic brightness.
-    Using the data file, determine the best-fit and "1 sigma" uncertainty for $\Omega_\Lambda$ from this data.
+    Using the data file, determine the best-fit and ``1 sigma'' uncertainty for $\Omega_\Lambda$ from this data.
 
     We have these:
     \begin{align*}
@@ -46,15 +46,28 @@
 
     We can minimize this, to find the best-fit $H_0L_0^2$ and $\Omega_\Lambda$.
 
-    The best-fit values: $\Omega_\Lambda = 0.714, H_0L_0^2 = \SI{4.87e-16}{}$
+    The best-fit values: $\Omega_\Lambda = 0.714, H_0L_0^2 = \SI{4.87e-16}{}$. A plot to make sure the fit actually worked:
 
-    We can sub in our best-fit $H_0L_0^2$ and find the points where $\Delta-\ln L = 0.5$ for ``$1\sigma$'' uncertainties.
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{q3_a_fit.png}
+    \end{center}
 
-    See the code for details, but we end up with almost symmetric errors, $+0.0164$ and $-0.0161$, so we can approximate those as the same and say
+    We can sub in our best-fit $H_0L_0^2$ and find the points where $-\Delta \ln L = 0.5$ for ``$1\sigma$'' uncertainties.
 
-    $$\Omega_\Lambda = 0.714 \pm 0.016$$
+    See the code for details, but we end up with almost symmetric errors, $+0.0164$ and $-0.0161$:
+
+    $$\Omega_\Lambda = 0.714^{+0.0164}_{-0.0161}.$$
+
+    \begin{center}
+        \includegraphics[width=0.75\textwidth]{q3_a_uncert.png}
+    \end{center}
 
     \item A possible systematic uncertainty in this measurement: $a$ such that $L_0(z) = L_0(1+az)$.
     $a=0 \pm 0.2$. Incorporating this as a new systematic to the calculation in Part A, calculate the total uncertainty on $\Omega_\Lambda$.
+
+    Proceeding in essentially the same way, except making the substitution $L_0 \to L_0(1+az)$ in the likelihood function, and adding an extra term into the likelihood function to deal with the prior on $a$ -- we took a Gaussian prior with mean 0, SD 0.2 and found a ML value of $a=0.0247$, see code for details -- we find:
+
+    $$\Omega_\Lambda = 0.753^{+0.0166}_{-0.0164}.$$
+
 
 \end{enumerate}

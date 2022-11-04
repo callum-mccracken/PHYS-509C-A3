@@ -10,15 +10,23 @@ Given:
     \Omega_m + \Omega_\Lambda &= 1 \\
 \end{align*}
 
-Calculate the correlation between $H_0$ and $\Omega_m$.
-
-Recall the error propagation equation with correlation:
-
+Find the age of the universe in terms of $H_0, \Omega_\Lambda$:
 \begin{align*}
-    \sigma_f^2 
+    a(t_u) = \left(\frac{\Omega_m}{\Omega_\Lambda}\right)^\frac{1}{3} \sinh^{\frac{2}{3}}\left(\frac{t_u}{t_\Lambda}\right)\\
+    1 = \left(\frac{\Omega_m}{\Omega_\Lambda}\right)^\frac{1}{3} \sinh^{\frac{2}{3}}\left(\frac{t_u}{t_\Lambda}\right)\\
+    \left(\frac{\Omega_\Lambda}{\Omega_m}\right)^\frac{1}{3} = \sinh^{\frac{2}{3}}\left(\frac{t_u}{t_\Lambda}\right)\\
+    \sqrt{\frac{\Omega_\Lambda}{\Omega_m}} = \sinh\left(\frac{t_u}{t_\Lambda}\right)\\
+    t_\Lambda\sinh^{-1}\left(\sqrt{\frac{\Omega_m}{\Omega_m}}\right) = t_u\\
+    \frac{2}{3H_0\sqrt{1 - \Omega_m}}\sinh^{-1}\left(\sqrt{\frac{1 - \Omega_m}{\Omega_m}}\right) = t_u\\
 \end{align*}
 
-\todo[inline]{How to deal with the correlation thing? Have we dealt with that in class?}
+Recall the error propagation equation with correlation, for a function $f(x,y)$:
+\begin{align*}
+    \sigma_f^2 &= \left(\frac{df}{dx}\right)^2 \sigma_x^2 + \left(\frac{df}{dy}\right)^2 \sigma_y^2 + 2\left(\frac{df}{dx}\right)\left(\frac{df}{dy}\right)\rho \sigma_x \sigma_y \\
+\end{align*}
 
-Then use error propagation to estimate the age of the universe, with uncertainty:
+We have uncertainties on $H_0$ and $\Omega_m$, and also the uncertainty on $f(H_0, \Omega_m) = \Omega_m H_0^3$. Use that to get $\rho$, then plug that value into the same equation for $t_u$ to get the uncertainty on $t_u$.
 
+The computation is done with sympy (see \texttt{q2.py}), but result is
+
+$$t_u = 13.803 \pm 0.024 \text{ Billion years.}$$
