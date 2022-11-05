@@ -11,7 +11,7 @@ matplotlib.rcParams['font.family'] = 'STIXGeneral'
 sigma_m = 0.1
 
 # open file, get data
-filedata = np.loadtxt("sn_data.txt")
+filedata = np.loadtxt("data/sn_data.txt")
 z = filedata[:,0]
 m = filedata[:,1]
 

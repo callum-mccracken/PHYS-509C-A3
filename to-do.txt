@@ -1,8 +1,8 @@
-1: Pretty much done (talk about code).
+1: Done.
 2: Done.
 3: Done.
-4: Need to check about uniform distribution -- what's the deal?
-5: Still a little stuck on c), do we need to deal with the derivative thing?
+4: Done.
+5: Done.
 
 
 

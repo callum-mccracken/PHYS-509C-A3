@@ -14,7 +14,7 @@ matplotlib.rcParams['font.family'] = 'STIXGeneral'
 
 
 # load data, use datetime module for dates
-file_data = np.loadtxt("stockdata.txt", dtype="str")
+file_data = np.loadtxt("data/stockdata.txt", dtype="str")
 print(file_data)
 dates = file_data[:,0]
 values = np.array(file_data[:,1], dtype=np.float32)
