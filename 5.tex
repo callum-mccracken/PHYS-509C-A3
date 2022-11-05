@@ -40,12 +40,8 @@
     \begin{align*}
         \int_0^1 g(p)dp &= 1 \\
         \int_0^1 A \frac{1}{\sqrt{p(1-p)}} dp &= 1 \\
-        A \pi &= 1 \\
         A &= \frac{1}{\pi} \\
-    \end{align*}
-
-    \begin{align*}
-        g(p) &= \frac{1}{\pi\sqrt{p(1-p)}} \\
+        \implies g(p) &= \frac{1}{\pi\sqrt{p(1-p)}} \\
     \end{align*}
 
     \item Suppose that you start with this prior, then flip the coin three times, yielding three heads. What is the probability that $p<0.5$?
@@ -109,11 +105,7 @@
     \begin{align*}
         \int_0^1 g(\psi)d\psi &= 1 \\
         \int_0^1 A \frac{4\psi}{\sqrt{1-\psi^4}} d\psi &= 1 \\
-        A \pi &= 1 \\
         A &= \frac{1}{\pi} \\
-    \end{align*}
-
-    \begin{align*}
         g(\psi) &= \frac{4\psi}{\pi\sqrt{1-\psi^4}} \\
     \end{align*}
 
@@ -140,7 +132,7 @@
     \begin{align*}
         P(\psi) &= P(p) \left|\frac{dp}{d\psi}\right| \\
         &= (1) 4\psi^3 \\
-        &\neq \text{uniform distribution} \\
+        4\psi^3 &\neq \text{a uniform distribution.}
     \end{align*}
 
 \end{enumerate}

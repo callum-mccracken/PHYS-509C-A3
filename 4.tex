@@ -14,7 +14,11 @@
         S_c = -\iiint P(p_1, p_2, p_3) \ln(P(p_1, p_2, p_3)) dp_1 dp_2 dp_3 + \text{constant}
     \end{align*}
 
-    And here we have the constraint $p_1+p_2+p_3 = 1$, as well as $24p_1 + 25p_2 + 26p_3 = 25.2$.
+    And here we have the following constraints:
+    \begin{align*}
+        p_1+p_2+p_3 &= 1\\
+        24p_1 + 25p_2 + 26p_3 &= 25.2 \\
+    \end{align*}
 
     When are both constraints satisfied?
     \begin{align*}
@@ -44,7 +48,7 @@
         \implies P(p_1) \ln(P(p_1)) &= 0 \\
     \end{align*}
 
-    This means either $P = 0$ (not possible for a probability distribution), or $\ln(P) = 0$.
+    This means either $P = 0$ (not possible here), or $\ln(P) = 0$.
     \begin{align*}
         \ln(P(p_1)) &= 0 \\
         \implies P(p_1) &= 1 \\
@@ -92,13 +96,13 @@
         P(n_1, n_2, n_3|p_1) &= \frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3} \\
     \end{align*}
 
-    Prob of data:
+    Probability of data:
     \begin{align*}
         P(n_1, n_2, n_3) &= \int_0^{0.4} P(p_1)P(n_1, n_2, n_3 | p_1)dp_1 \\
         &= \int_0^{0.4} P(p_1)\frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}dp_1 \\
     \end{align*}
 
-    Posterior:
+    Posterior (cancel constants):
     \begin{align*}
         P(p_1| n_1, n_2, n_3) &= \frac{P(n_1, n_2, n_3| p_1)P(p_1)}{P(n_1, n_2, n_3)}\\
         &= \frac{P(p_1)\frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}}{\int_0^{0.4} P(p_1)\frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}dp_1}\\

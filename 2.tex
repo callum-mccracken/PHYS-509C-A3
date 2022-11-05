@@ -25,7 +25,7 @@ Recall the error propagation equation with correlation, for a function $f(x,y)$:
     \sigma_f^2 &= \left(\frac{df}{dx}\right)^2 \sigma_x^2 + \left(\frac{df}{dy}\right)^2 \sigma_y^2 + 2\left(\frac{df}{dx}\right)\left(\frac{df}{dy}\right)\rho \sigma_x \sigma_y \\
 \end{align*}
 
-We have uncertainties on $H_0$ and $\Omega_m$, and also the uncertainty on $f(H_0, \Omega_m) = \Omega_m H_0^3$. Use that to get $\rho$, then plug that value into the same equation for $t_u$ to get the uncertainty on $t_u$.
+We have uncertainties on $H_0$ and $\Omega_m$, and also the uncertainty on $$f(H_0, \Omega_m) = \Omega_m H_0^3.$$ Use that to get $\rho$, then plug that value into the same equation for $t_u$ to get the uncertainty on $t_u$.
 
 The computation is done with sympy (see \texttt{q2.py}), but result is
 
