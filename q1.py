@@ -79,33 +79,33 @@ plt.cla()
 plt.clf()
 
 # now generate random variables from each distribution
-n_days = 250*30
-n_trials = 1000
+N_DAYS = 250*30
+N_TRIALS = 1000
 
 # arrays to store results at the end of each trial
-gaussian_results = np.empty(n_trials)
-laplace_results = np.empty(n_trials)
-data_results = np.empty(n_trials)
+gaussian_results = np.empty(N_TRIALS)
+laplace_results = np.empty(N_TRIALS)
+data_results = np.empty(N_TRIALS)
 
 # arrays to store simulation values during each trial
-gaussian_values = np.empty(n_days)
-laplace_values = np.empty(n_days)
-data_values = np.empty(n_days)
+gaussian_values = np.empty(N_DAYS)
+laplace_values = np.empty(N_DAYS)
+data_values = np.empty(N_DAYS)
 
 print("Simulating... 🤓")
-for trial in tqdm(range(n_trials)):
+for trial in tqdm(range(N_TRIALS)):
     # start from 100
     gaussian_values[0] = 100
     laplace_values[0] = 100
     data_values[0] = 100
 
     # calculate return for each day (we'll ignore the first day)
-    gaussian_returns = np.random.normal(mu_0, sigma_0, n_days)
-    laplace_returns = np.random.laplace(A_0, B_0, n_days)
-    data_returns = random.sample(sorted(returns), n_days)
+    gaussian_returns = np.random.normal(mu_0, sigma_0, N_DAYS)
+    laplace_returns = np.random.laplace(A_0, B_0, N_DAYS)
+    data_returns = random.sample(sorted(returns), N_DAYS)
 
     # calculate subsequent values
-    for day in range(n_days-1):
+    for day in range(N_DAYS-1):
         gaussian_values[day+1] = gaussian_values[day] / (
             1-gaussian_returns[day+1])
         laplace_values[day+1] = laplace_values[day] / (
