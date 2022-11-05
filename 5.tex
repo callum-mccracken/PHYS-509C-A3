@@ -79,7 +79,7 @@
 
     \item Suppose $p = \psi^4$. Derive the Jeffreys prior for $\psi$, starting with the likelihood for a single coin flip expressed as a function of $\psi$.
     
-    Use the Jeffreys prior formula again, where the likelihood is related to our binomial from before. Note that we take $\psi \in [0, 1]$, we could also use $\psi \in [-1, 1]$ but this would mean we have to worry about absolute values and such, and we'll just be off by a factor of two which we can correct for by normalizing.
+    Use the Jeffreys prior formula again, where the likelihood is  our binomial from before, with $p = \psi^4$. Note that we take $\psi \in [0, 1]$, we could also use $\psi \in [-1, 1]$ but this would mean we have to worry about absolute values, which are yucky.
 
     \begin{align*}
         L(n|N, \psi) &= L(n|N, p=\psi^4) \\
@@ -130,10 +130,9 @@
 
     (we can drop the absolute value since we've defined $\psi$ to be positive)
 
+    \newpage
     \item Finally, show that if you started with a uniform prior for $p$ and a uniform prior for $\psi$, then these priors are actually different after converting from one parametrization to another with a change of variables. Thus a uniform prior is not a Jeffreys prior for this problem.
     
-    Uniform prior for $\psi$: $P(\psi) = \frac{1}{2}, \psi \in [-1,1]$.
-
     Uniform for $p$: $P(p) = 1, p \in [0,1]$.
 
     Change of variables from $p \to \psi$:

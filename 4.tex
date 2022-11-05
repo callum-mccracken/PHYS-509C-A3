@@ -16,49 +16,41 @@
 
     And here we have the constraint $p_1+p_2+p_3 = 1$, as well as $24p_1 + 25p_2 + 26p_3 = 25.2$.
 
-    Use the constraints to get the integral down to a single integral:
-
+    When are both constraints satisfied?
     \begin{align*}
-        S_c &= -\iiint \delta(p_1 + p_2 + p_3 - 1) \delta(24p_1 + 25p_2 + 26p_3 - 25.2) \\
-        &\hspace{2cm}P(p_1, p_2, p_3) \ln(P(p_1, p_2, p_3)) dp_1 dp_2 dp_3 + \text{constant} \\
-        &= -\iint \delta(24p_1 + 25p_2 + 26(1 - p_1 - p_2) - 25.2) \\
-        &\hspace{2cm}P(p_1, p_2, (1 - p_1 - p_2)) \ln(P(p_1, p_2, (1 - p_1 - p_2))) dp_1 dp_2 + \text{constant} \\
-    \end{align*}
-
-    When is that second delta equal to zero?
-    \begin{align*}
-        24p_1 + 25p_2 + 26(1 - p_1 - p_2) - 25.2 &= 0\\
+        p_1 + p_2 + p_3 &= 1 \\
+        \implies p_3 &= 1 - p_1 - p_2 \\
+        24p_1 + 25p_2 + 26(p_3) &= 25.2\\
+        \implies 24p_1 + 25p_2 + 26(1 - p_1 - p_2) &= 25.2\\
         24p_1 + 25p_2 - 26p_1 - 26p_2 &= 25.2 - 26\\
         -2p_1 - p_2 &= -0.8\\
         p_2 &= 0.8 - 2p_1\\
-        \implies p_3 &= 1 - p_1 - p_2 \\
-        &= 1 - p_1 - 0.8 + 2p_1 \\
-        &= 0.2 + p_1 \\
+        p_3 &= 1 - p_1 - p_2 \\
+        \implies p_3 &= 1 - p_1 - (0.8 - 2p_1) \\
+        p_3 &= 0.2 + p_1 \\
     \end{align*}
 
+    Use the constraints to get the triple integral down to a single integral:
     \begin{align*}
-        S_c &= -\int P(p_1, 0.8 - 2p_1, 0.2 + p_1) \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) dp_1 + \text{constant} \\
+        S_c &= -\iiint \delta(p_1 + p_2 + p_3 - 1) \delta(p_2 = 0.8 - 2p_1) \\
+        &\hspace{2cm}P(p_1, p_2, p_3) \ln(P(p_1, p_2, p_3)) dp_1 dp_2 dp_3 + \text{constant} \\
+        &= -\int_0^{p_1} P(p_1') \ln(P(p_1')) dp_1' + \text{constant} \\
     \end{align*}
 
-    Maximize:
+    Maximize the entropy:
     \begin{align*}
-        \frac{d}{dp_1}S_c &= 0 \\
-        -\frac{d}{dp_1}\int_0^{p_1} P(p_1', 0.8 - 2p_1', 0.2 + p_1') \ln(P(p_1', 0.8 - 2p_1', 0.2 + p_1')) dp_1' + 0 &= 0 \\
-        P(p_1, 0.8 - 2p_1, 0.2 + p_1) \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) &= 0 \\
-        P(p_1, 0.8 - 2p_1, 0.2 + p_1) \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) &= 0 \\
+        \frac{dS_c}{dp_1} &= 0 \\
+        -\frac{d}{dp_1}\int_0^{p_1} P(p_1') \ln(P(p_1')) dp_1' + 0 &= 0 \\
+        \implies P(p_1) \ln(P(p_1)) &= 0 \\
     \end{align*}
 
     This means either $P = 0$ (not possible for a probability distribution), or $\ln(P) = 0$.
     \begin{align*}
-        \ln(P(p_1, 0.8 - 2p_1, 0.2 + p_1)) &= 0 \\
-        \implies P(p_1, 0.8 - 2p_1, 0.2 + p_1) &= 1 \\
+        \ln(P(p_1)) &= 0 \\
+        \implies P(p_1) &= 1 \\
     \end{align*}
 
-    So the distribution is uniform... This seems a little suspicious but okay...
-
-    Normalize this over the possible range of $p_1$. Minimum is zero, find the max:
-
-
+    To normalize, find the bounds on $p_1$:
     \begin{align*}
         0 &\le p_2 \le 1 \\
         0 &\le 0.8 - 2p_1 \le 1 \\
@@ -75,16 +67,60 @@
         \implies 0 &\le p_1 \le 0.8 \\
     \end{align*}
 
-    Take the minimum bound, $p_1 \in [0, 0.4]$
-
+    Combining those, we see, $p_1 \in [0, 0.4]$. Normalize:
     \begin{align*}
-        P(p_1) = \frac{1}{0.4} = 2.5, p_1 \in [0, 0.4]
+        \int_0^{0.4} P(p_1) dp_1 = 0.4
+    \end{align*}
+
+    So our probability distribution is:
+    \begin{align*}
+        P(p_1) &= 2.5, p_1 \in [0, 0.4]
+    \end{align*}
+
+    We could also write this with delta functions if we didn't want to specify a range:
+    \begin{align*}
+        P(p_1, p_2, p_3) &= 2.5\delta(p_1+p_2+p_3-1)\delta(24p_1 + 25p_2 + 26p_3 - 25.2)\\
     \end{align*}
 
     \item Suppose we measure $p_1 = \frac{12}{20}, p_2 = \frac{3}{20}, p_3 = \frac{5}{20}$.
+
+    Prior: $P(p_1) = 2.5, p_1 \in [0, 0.4]$
+
+    Likelihood: multinomial with $p_1, p_2 = 0.8 - 2p_1, p_3 = 0.2 + p_1$
+    \begin{align*}
+        P(n_1, n_2, n_3|p_1, p_2, p_3) &= \frac{n!}{n_1!n_2!n_3!}p_1^{n_1}p_2^{n_2}p_3^{n_3}\\
+        P(n_1, n_2, n_3|p_1) &= \frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3} \\
+    \end{align*}
+
+    Prob of data:
+    \begin{align*}
+        P(n_1, n_2, n_3) &= \int_0^{0.4} P(p_1)P(n_1, n_2, n_3 | p_1)dp_1 \\
+        &= \int_0^{0.4} P(p_1)\frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}dp_1 \\
+    \end{align*}
+
+    Posterior:
+    \begin{align*}
+        P(p_1| n_1, n_2, n_3) &= \frac{P(n_1, n_2, n_3| p_1)P(p_1)}{P(n_1, n_2, n_3)}\\
+        &= \frac{P(p_1)\frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}}{\int_0^{0.4} P(p_1)\frac{n!}{n_1!n_2!n_3!}p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}dp_1}\\
+        &= \frac{p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}}{\int_0^{0.4} p_1^{n_1}(0.8 - 2p_1)^{n_2}(0.2 + p_1)^{n_3}dp_1}\\
+    \end{align*}
+
+    \newpage
+    If we go any further analytically it might be messy, but here's a plot:
+
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{q4_b.png}
+    \end{center}
+
+    \newpage
+    \item If the data were instead $n_1 = 12, n_2 = 7, n_3 = 1$, what is the posterior? Argue why it makes sense.
     
-    Prior: $P(p_1) = 15, p_1 \in [0, \frac{0.2}{3}]$
+    It's the posterior from above, with new $n$ values, here's a plot of both:
+
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{q4_c.png}
+    \end{center}
+
+    They're not same, which makes sense since although the posterior doesn't depend on $p_2$ and $p_3$, it does depend on $n_2$ and $n_3$.
 
 \end{enumerate}
-
-\todo[inline]{Double-check!}

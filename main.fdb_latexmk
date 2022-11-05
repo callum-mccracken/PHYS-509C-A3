@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1667593698 "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A3/main.tex" "main.pdf" "main" 1667593699
+["pdflatex"] 1667610497 "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A3/main.tex" "main.pdf" "main" 1667610497
   "/etc/texmf/web2c/texmf.cnf" 1650909748 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A3/main.tex" 1666726460 1136 f90e261ca13f94301cec66efdb2df033 ""
+  "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A3/main.tex" 1667610496 1136 3aae1b512416d6ea29b5ec45ee577f29 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1440.tfm" 1136768653 1536 3290a75021d32d016616fe527bc9884c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -193,15 +193,17 @@
   "1.tex" 1667528774 2149 7fb1f7cf6e8e4ee687fb79830c9e157b ""
   "2.tex" 1667519650 1818 a1a28d7f52c5070c5386ad0d947758ba ""
   "3.tex" 1667528842 4416 962516117a994c440880eb59ebc99145 ""
-  "4.tex" 1667459494 3914 2f52de4ac7e3a44158a23cdb3592be6a ""
-  "5.tex" 1667593696 6697 b3b10ebef8e77135c6c6c544ea82cd30 ""
-  "main.aux" 1667593699 1600 9142989c5dad3a4f9fa3b5be994a1f11 "pdflatex"
-  "main.out" 1667593699 1968 d5abf019a43a6f022a2ba300ad2e0c55 "pdflatex"
-  "main.tex" 1666726460 1136 f90e261ca13f94301cec66efdb2df033 ""
+  "4.tex" 1667610445 5361 f403fa389796b87d09a714a887169711 ""
+  "5.tex" 1667597010 6572 4c137a49e4dd6a36973bc8dc4ceaac74 ""
+  "main.aux" 1667610497 1462 5255f031c2b78b2aefd7b7bbdb1c76b0 "pdflatex"
+  "main.out" 1667610497 1968 d5abf019a43a6f022a2ba300ad2e0c55 "pdflatex"
+  "main.tex" 1667610496 1136 3aae1b512416d6ea29b5ec45ee577f29 ""
   "q1_generator_comparison.png" 1667536111 18969 05473b54ac4e531068ff9b2780fb90b2 ""
   "q1_return_hist.png" 1667536082 32144 5d0bf21fa5e9c8d0d76a8d76f759709c ""
   "q3_a_fit.png" 1667537925 18155 1cde208f12573748ea3b6aec3d0f150c ""
   "q3_a_uncert.png" 1667537925 23845 d3efa8c2d0d9ab511c5716e1a45c0db2 ""
+  "q4_b.png" 1667610419 21217 a9896f1c47713acad33a338b22f616b7 ""
+  "q4_c.png" 1667610419 30564 990a8c7f0a6fadb92204ae6b5b24315f ""
   (generated)
   "main.aux"
   "main.log"

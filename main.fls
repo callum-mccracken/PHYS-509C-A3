@@ -1106,6 +1106,16 @@ INPUT 4.tex
 INPUT ./4.tex
 INPUT ./4.tex
 INPUT 4.tex
+INPUT ./q4_b.png
+INPUT ./q4_b.png
+INPUT q4_b.png
+INPUT ./q4_b.png
+INPUT ./q4_b.png
+INPUT ./q4_c.png
+INPUT ./q4_c.png
+INPUT q4_c.png
+INPUT ./q4_c.png
+INPUT ./q4_c.png
 INPUT ./5.tex
 INPUT ./5.tex
 INPUT ./5.tex
