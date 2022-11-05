@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1667612254 "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A3/main.tex" "main.pdf" "main" 1667612255
+["pdflatex"] 1667612657 "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A3/main.tex" "main.pdf" "main" 1667612658
   "/etc/texmf/web2c/texmf.cnf" 1650909748 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/callum/Documents/Classes/PHYS 509C/PHYS-509C-A3/main.tex" 1667610602 1137 daf5b43346b1f3b79acedcc651bd2953 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -195,14 +195,14 @@
   "3.tex" 1667612246 3791 145a5cab66db064050190116994b1fc0 ""
   "4.tex" 1667612253 5429 3a5ddaf24a37c32b28e8a30a395ee42f ""
   "5.tex" 1667612055 6471 b77dbf3a25f3d6b04e55ece6ed2dc8af ""
-  "images/q1_generator_comparison.png" 1667611145 18952 44d3cc6c9bee35925256139de55fb296 ""
-  "images/q1_return_hist.png" 1667611121 32093 0f6e5b4e653f5f501eb3e73e4ead631f ""
+  "images/q1_generator_comparison.png" 1667612656 19044 e5ff4657f45a531c33988e2a4b1e3222 ""
+  "images/q1_return_hist.png" 1667612633 32093 0f6e5b4e653f5f501eb3e73e4ead631f ""
   "images/q3_a_fit.png" 1667611151 18155 2880cb6d294c9fd7f69aa1453feb34db ""
   "images/q3_a_uncert.png" 1667611152 23845 db83801758a4cb9eec3bb107764dc84c ""
   "images/q4_b.png" 1667610419 21217 a9896f1c47713acad33a338b22f616b7 ""
   "images/q4_c.png" 1667610419 30564 990a8c7f0a6fadb92204ae6b5b24315f ""
-  "main.aux" 1667612255 1462 5255f031c2b78b2aefd7b7bbdb1c76b0 "pdflatex"
-  "main.out" 1667612255 1968 d5abf019a43a6f022a2ba300ad2e0c55 "pdflatex"
+  "main.aux" 1667612658 1462 5255f031c2b78b2aefd7b7bbdb1c76b0 "pdflatex"
+  "main.out" 1667612658 1968 d5abf019a43a6f022a2ba300ad2e0c55 "pdflatex"
   "main.tex" 1667610602 1137 daf5b43346b1f3b79acedcc651bd2953 ""
   (generated)
   "main.aux"

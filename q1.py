@@ -1,6 +1,5 @@
-"""
-Question 1, A.
-"""
+"""Q1 -- S%P 500"""
+
 import random
 from datetime import datetime
 from matplotlib import pyplot as plt
@@ -12,10 +11,8 @@ import utils
 matplotlib.rcParams['mathtext.fontset'] = 'stix'
 matplotlib.rcParams['font.family'] = 'STIXGeneral'
 
-
 # load data, use datetime module for dates
 file_data = np.loadtxt("data/stockdata.txt", dtype="str")
-print(file_data)
 dates = file_data[:,0]
 values = np.array(file_data[:,1], dtype=np.float32)
 datetimes = np.array([datetime.strptime(date, '%Y-%m-%d') for date in dates])
@@ -24,7 +21,7 @@ datetimes = np.array([datetime.strptime(date, '%Y-%m-%d') for date in dates])
 plt.plot(datetimes, values)
 plt.xlabel("Year")
 plt.ylabel("Value of S&P 500")
-plt.savefig("q1_value_over_time.png")
+plt.savefig("images/q1_value_over_time.png")
 plt.cla()
 plt.clf()
 
@@ -35,20 +32,20 @@ returns = np.array([
 # plot the data in a histogram, density=True ensures histogram is normalized
 plt.hist(returns, bins=100, density=True, label="Data")
 
-
 def gauss_neg_ll(mu, sigma):
     """See pdf for how we got this, negative log likelihood for Gaussian."""
-    return np.sum(np.log(np.sqrt(2*np.pi)*sigma) + (returns - mu)**2 / (2*sigma**2))
+    return np.sum(
+        np.log(np.sqrt(2*np.pi)*sigma) + (returns - mu)**2 / (2*sigma**2))
 
 # got this guess from looking at the histogram
 gauss_guess = (0.0001, 0.01)
 # minimize log likelihood to get gaussian params
-mu_0, sigma_0 = minimize(utils.one_param(gauss_neg_ll), gauss_guess, method="Nelder-Mead").x
+mu_0, sigma_0 = minimize(
+    utils.one_param(gauss_neg_ll), gauss_guess, method="Nelder-Mead").x
 print(f"{mu_0=}, {sigma_0=}")
 
 # add the Gaussian to the plot
 r = sorted(returns)
-print(min(r), max(r))
 gaussian_fit_pdf = utils.gaussian_pdf(r, mu=mu_0, sigma=sigma_0)
 plt.plot(r, gaussian_fit_pdf, label="Gaussian ML best-fit distribution")
 
@@ -58,9 +55,10 @@ def laplace_neg_ll(A, B):
     return np.sum(np.log(2*np.abs(B)) + np.abs(returns - A) / np.abs(B))
 
 
-# use same guess, minimize Laplace distribution to get this
+# use another guess, minimize Laplace distribution
 laplace_guess = (0.0001, 0.01)
-A_0, B_0 = minimize(utils.one_param(laplace_neg_ll), laplace_guess, method="Nelder-Mead").x
+A_0, B_0 = minimize(
+    utils.one_param(laplace_neg_ll), laplace_guess, method="Nelder-Mead").x
 print(f"{A_0=}, {B_0=}")
 
 
@@ -76,25 +74,26 @@ plt.yscale("log")
 plt.xlabel("Return")
 plt.ylabel("log(P(R))")
 plt.legend()
-plt.savefig("q1_return_hist.png")
+plt.savefig("images/q1_return_hist.png")
 plt.cla()
 plt.clf()
 
 # now generate random variables from each distribution
 n_days = 250*30
-
 n_trials = 1000
+
+# arrays to store results at the end of each trial
 gaussian_results = np.empty(n_trials)
 laplace_results = np.empty(n_trials)
 data_results = np.empty(n_trials)
 
-# make arrays to store simulation values
+# arrays to store simulation values during each trial
 gaussian_values = np.empty(n_days)
 laplace_values = np.empty(n_days)
 data_values = np.empty(n_days)
 
+print("Simulating... 🤓")
 for trial in tqdm(range(n_trials)):
-
     # start from 100
     gaussian_values[0] = 100
     laplace_values[0] = 100
@@ -114,14 +113,12 @@ for trial in tqdm(range(n_trials)):
         data_values[day+1] = data_values[day] / (
             1-data_returns[day+1])
 
-    # print("Gaussian final value", gaussian_values[-1])
-    # print("Laplace final value", laplace_values[-1])
-    # print("Data final value", data_values[-1])
-
+    # store final results
     gaussian_results[trial] = gaussian_values[-1]
     laplace_results[trial] = laplace_values[-1]
     data_results[trial] = data_values[-1]
 
+# plot histograms
 plt.hist(gaussian_results, label="Gaussian", bins=50, alpha=0.5, density=True)
 plt.hist(laplace_results, label="Laplace", bins=50, alpha=0.5, density=True)
 plt.hist(data_results, label="Data", bins=50, alpha=0.5, density=True)
@@ -129,6 +126,6 @@ plt.xlabel("Value v After 30 Years (truncated at 30k)")
 plt.ylabel("P(v)")
 plt.legend()
 plt.xlim(0, 30000)
-plt.savefig("q1_generator_comparison.png")
+plt.savefig("images/q1_generator_comparison.png")
 plt.cla()
 plt.clf()

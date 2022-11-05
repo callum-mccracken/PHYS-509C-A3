@@ -1,4 +1,4 @@
-"""Solve Q2 with sympy"""
+"""Q2 -- Age of the Universe"""
 import sympy
 
 # define symbols
@@ -6,20 +6,12 @@ O, sigma_O, H, sigma_H, sigma_f = sympy.symbols(
     "O, sigma_O, H, sigma_H, sigma_f", real=True)
 
 # define values to plug in later
-# values = {
-#     O: 0.3166,  # Omega_m
-#     sigma_O: 0.0084,
-#     H: 2.18007223e-18,  # H_0, converted to 1/s units
-#     sigma_H: 1.94446757e-20,
-#     sigma_f: 9.87066385e-57  # uncertainty given in question, in 1/s^3 units
-# }
-
 values = {
-    O: 0.3166,
+    O: 0.3166,  # Omega_m
     sigma_O: 0.0084,
-    H: 67.27,
-    sigma_H: 0.6,
-    sigma_f: 290
+    H: 2.18007223e-18,  # H_0, converted to 1/s units
+    sigma_H: 1.94446757e-20,
+    sigma_f: 9.87066385e-57  # uncertainty given in question, in 1/s^3 units
 }
 
 # define f = O H^3 and get its derivatives to use in the error prop equation

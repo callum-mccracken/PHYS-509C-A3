@@ -45,7 +45,7 @@ for trial in trials:
     print(C_0, B_0, A_0, sigma_0)
     plt.plot(t_data, y_data, 'go')
     plt.errorbar(t_data, fit_function(t_data, C_0, B_0, A_0), yerr=sigma_0)
-    plt.savefig("q3.png")
+    plt.savefig("images/q3.png")
 
     # How much of that uncertainty can be attributed to the time binning
     # (measurements are only reported to the nearest minute)?
