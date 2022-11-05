@@ -32,10 +32,10 @@ returns = np.array([
 # plot the data in a histogram, density=True ensures histogram is normalized
 plt.hist(returns, bins=100, density=True, label="Data")
 
-def gauss_neg_ll(mu, sigma):
+def gauss_neg_ll(mean, sigma):
     """See pdf for how we got this, negative log likelihood for Gaussian."""
     return np.sum(
-        np.log(np.sqrt(2*np.pi)*sigma) + (returns - mu)**2 / (2*sigma**2))
+        np.log(np.sqrt(2*np.pi)*sigma) + (returns - mean)**2 / (2*sigma**2))
 
 # got this guess from looking at the histogram
 gauss_guess = (0.0001, 0.01)
@@ -50,9 +50,14 @@ gaussian_fit_pdf = utils.gaussian_pdf(r, mu=mu_0, sigma=sigma_0)
 plt.plot(r, gaussian_fit_pdf, label="Gaussian ML best-fit distribution")
 
 
-def laplace_neg_ll(A, B):
-    """See pdf for how we got this, negative log likelihood for Laplace."""
-    return np.sum(np.log(2*np.abs(B)) + np.abs(returns - A) / np.abs(B))
+def laplace_neg_ll(peak, width):
+    """
+    See pdf for how we got this, negative log likelihood for Laplace.
+
+    peak = A, width = B
+    """
+    return np.sum(
+        np.log(2*np.abs(width)) + np.abs(returns - peak) / np.abs(width))
 
 
 # use another guess, minimize Laplace distribution
@@ -62,9 +67,9 @@ A_0, B_0 = minimize(
 print(f"{A_0=}, {B_0=}")
 
 
-def laplace_pdf(R, A, B):
-    """Laplace PDF as given in the question"""
-    return 1/(2*B) * np.exp(-np.abs(R-A)/B)
+def laplace_pdf(r_val, peak, width):
+    """Laplace PDF as given in the question, r_val = R, peak=A, width=B"""
+    return 1/(2*width) * np.exp(-np.abs(r_val-peak)/width)
 
 # add the Laplace distribution to the plot
 plt.plot(r, laplace_pdf(r, A_0, B_0), label="Laplace ML best-fit distribution")
